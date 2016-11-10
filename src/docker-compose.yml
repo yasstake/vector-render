@@ -1,0 +1,14 @@
+
+smrender:
+  build: src/smrender
+  volumes:
+   - ./import:/import
+imposm2:
+  build: src/imposm2
+  command: ./import-pbf.sh
+  volumes:
+   - ./import:/data/import
+  volumes_from:
+   - cache
+  links:
+   - postgis:db
