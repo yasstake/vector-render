@@ -6,12 +6,8 @@ OSMFILE=./import/japan-latest.osm.pbf
 
 
 setup:
-	apt-get update
-	apt-get install -y emacs make git
-
-	wget -qO- https://get.docker.com/ | sh
-	curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-	chmod a+x  /usr/local/bin/docker-compose
+	sudo apt install -y docker.io
+	sudo apt install -y docker-compose
 
 
 clone:
