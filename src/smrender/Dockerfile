@@ -11,6 +11,9 @@ RUN wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o /bin/osmconv
 
 RUN /sbin/ldconfig
 
+RUN apt-get install -y osmosis
+
+
 ADD rules/rules.osm /
 ADD Makefile /
 ADD run.sh /
