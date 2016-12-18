@@ -1,4 +1,10 @@
 
+import-land:
+  build: "src/import-land"
+  command: ./import-land.sh
+  links:
+  - postgis:db
+
 smrender:
   build: src/smrender
   volumes:

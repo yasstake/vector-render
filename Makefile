@@ -28,11 +28,16 @@ smrender:
 	docker-compose up smrender
 
 
-import-sea:
+import-sea: docker-compose.yml
+	date
 	docker-compose up -d postgis
-	docker-compose up import-external
+	date
+	docker-compose up smrender
+	date
 	docker-compose up imposm2
-
+	date
+	docker-compose up import-external
+	date
 
 import-tiles: docker-compose.yml
 	docker-compose up -d postgis
@@ -42,7 +47,10 @@ import-tiles: docker-compose.yml
 
 export-tiles:docker-compose.yml
 	docker-compose run \
-		  -e BBOX="8.34,47.27,8.75,47.53" \
-		  -e MIN_ZOOM="8" \
-		  -e MAX_ZOOM="14" \
-		  export
+	   -e BBOX="139,34,140,36" \
+	   -e MIN_ZOOM="8" \
+	   -e MAX_ZOOM="14" \
+	  export
+
+	docker-compose run \
+	  export
