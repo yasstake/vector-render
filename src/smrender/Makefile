@@ -62,6 +62,9 @@ $(JAPAN_FILTER_PBF): $(JAPAN_SEAFILTER_OSM)
 download: $(WORKDIR)
 	wget  http://download.geofabrik.de/asia/japan-latest.osm.pbf -O $(ORGPBF)
 
+clip:
+	osmconvert  -b=139,34,140,36  /import/org/japan-latest.osm.pbf -o=$(ORGPBF)
+
 
 $(FISH_RIGHT_OSM):
 	wget https://github.com/yasstake/ksj2osm/raw/master/fish.osm -O $(FISH_RIGHT_OSM)
