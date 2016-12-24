@@ -653,6 +653,39 @@ marinefarm = Polygons (
     )
 )
 
+rock = Points(
+  name = 'rock',
+  mapping = {
+    'seamark:type': (
+        'rock',
+    )
+  },
+  fields = (
+        ('seamark:rock:water_level', String()),
+  )
+)
+
+
+horbour = Points(
+  name = 'horbour',
+  mapping = {
+    'seamark:type': (
+        'harbour',
+        'harbour_basin',
+        'dock',
+        'dry_dock',
+        'floating_dock',
+        'berth',
+    )
+  },
+  fields = (
+      ('seamark:harbour:category', String()),
+      ('website', String()),
+      ('phone', String()),
+  )
+)
+
+
 
 landmarks = Points(
   name = 'landmarks',
