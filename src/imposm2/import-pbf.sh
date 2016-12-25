@@ -20,7 +20,7 @@ readonly PG_CONNECT="postgis://$OSM_USER:$OSM_PASSWORD@$DB_HOST/$OSM_DB"
 function import_pbf() {
     local pbf_file="$1"
     echo "$pbf_file"
-    imposm -m imposm_sea.py --merge-cache --cache-dir="$IMPOSM_CACHE_DIR" --read "$pbf_file"
+    imposm -m import.py --merge-cache --cache-dir="$IMPOSM_CACHE_DIR" --read "$pbf_file"
 }
 
 
@@ -41,5 +41,5 @@ function main() {
 
 main
 
-imposm --connection "$PG_CONNECT" -m imposm_sea.py \
+imposm --connection "$PG_CONNECT" -m import.py \
        --write --optimize --overwrite-cache --deploy-production-tables  --cache-dir="$IMPOSM_CACHE_DIR"

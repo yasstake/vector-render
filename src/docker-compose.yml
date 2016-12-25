@@ -18,3 +18,13 @@ imposm2:
    - cache
   links:
    - postgis:db
+
+imposm3:
+  build: "src/import-osm"
+  command: ./import-pbf.sh
+  volumes:
+   - ./import:/data/import
+  volumes_from:
+   - cache
+  links:
+   - postgis:db
