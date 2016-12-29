@@ -54,8 +54,17 @@ db_conf = Options(
 )
 
 
-
-
+waterareas = Polygons(
+    name = 'waterareas',
+    fields = (
+        ('area', PseudoArea()),
+    ),
+    mapping = {
+        'waterway': ('riverbank',),
+        'natural': ('water',),
+        'landuse': ('basin', 'reservoir'), 
+    },
+)
 
 
 # Custom tables for OpenSeaMap features
