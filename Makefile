@@ -38,6 +38,7 @@ import-sea: docker-compose.yml
 	date
 	docker-compose up import-external
 	date
+	docker-compose up import-land
 
 import-tiles: docker-compose.yml
 	docker-compose up -d postgis
@@ -45,12 +46,23 @@ import-tiles: docker-compose.yml
 	docker-compose up import-osm
 	docker-compose up import-sql
 
-export-tiles:docker-compose.yml
-	docker-compose run \
-	   -e BBOX="139,34,140,36" \
-	   -e MIN_ZOOM="8" \
-	   -e MAX_ZOOM="14" \
-	  export
 
-	docker-compose run \
-	  export
+mapbox:
+	docker-compose up -d mapbox-studio
+
+
+DOCROOT=/mnt/hdd/www/seatile
+MBTILES=./export/tiles.mbtiles
+
+export-tiles:docker-compose.yml
+	- rm -f $(MBTILES)
+	docker-compose run -e BBOX="100,25,155,40" -e MIN_ZOOM="0" -e MAX_ZOOM="10" export
+
+website:
+	- rm -rf $(DOCROOT)
+
+	mb-util --image_format=pbf $(MBTILES)  $(DOCROOT)
+	cp www/htaccess $(DOCROOT)/.htaccess
+
+coastline:
+	docker run -v /home/yass/project/vector-render/import/WORK:/data -it osmcoastline ./osmcoastline.sh /data/japan-latest.osm.pbf land

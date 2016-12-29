@@ -53,6 +53,16 @@ db_conf = Options(
     proj='epsg:900913',
 )
 
+coastline = LineStrings(
+    name = 'coastline',
+    mapping = {
+        'natural': (
+            'coastline',
+        ),
+    },
+)
+
+
 
 waterareas = Polygons(
     name = 'waterareas',

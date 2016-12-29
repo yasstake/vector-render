@@ -4,6 +4,8 @@ import-land:
   command: ./import-land.sh
   links:
   - postgis:db
+  volumes:
+   - ./import:/import
 
 smrender:
   build: src/smrender
@@ -28,3 +30,9 @@ imposm3:
    - cache
   links:
    - postgis:db
+
+coastline:
+  build: "src/coastline"
+  volumes:
+   - ./import:/data/import
+  
