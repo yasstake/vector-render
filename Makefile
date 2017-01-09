@@ -56,7 +56,7 @@ MBTILES=./export/tiles.mbtiles
 
 export-tiles:docker-compose.yml
 	- rm -f $(MBTILES)
-	docker-compose run -e BBOX="138,30,152,40" -e MIN_ZOOM="9" -e MAX_ZOOM="14" export
+	docker-compose run -e BBOX="138,30,152,40" -e MIN_ZOOM="9" -e MAX_ZOOM="13" export
 
 website:
 	- rm -rf $(DOCROOT)
