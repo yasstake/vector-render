@@ -3,14 +3,42 @@ _prefs:
   inspector: false
   mapid: ''
   rev: ''
-  saveCenter: true
+  saveCenter: false
 attribution: ''
 center: 
-  - 139.6675
-  - 35.1396
-  - 13
+  - 139.6033
+  - 35.2647
+  - 10
 description: ''
 Layer: 
+  - id: horbour
+    Datasource: 
+      dbname: osm
+      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
+      geometry_field: ''
+      geometry_table: ''
+      host: db
+      key_field: ''
+      key_field_as_attribute: ''
+      max_size: 512
+      password: osm
+      port: ''
+      srid: ''
+      table: osm_horbour
+      type: postgis
+      user: osm
+    description: ''
+    fields: 
+      id: Number
+      name: String
+      osm_id: Number
+      phone: String
+      "seamark:harbour:category": String
+      type: String
+      website: String
+    properties: 
+      "buffer-size": 8
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: fishing_right
     Datasource: 
       dbname: osm
